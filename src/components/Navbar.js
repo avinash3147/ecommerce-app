@@ -10,12 +10,8 @@ const Navbar = () => {
         <NavConatiner>
             <div className='nav-container'>
                 <div className='nav-header'>
-
-                    <Link to='/'>
-                        <img src={logo} alt='comfy sloth' />
-                    </Link>
-
-                    <button type='button' className='nav-toggle'>
+                    <img src={logo} alt='comfy store' />
+                    <button className='nav-toggle'>
                         <FaBars />
                     </button>
                 </div>
@@ -23,7 +19,7 @@ const Navbar = () => {
                 <ul className='nav-links'>
                     {
                         links.map((link) => {
-                            const { id, text, url } = link
+                            const { id, text, url } = link;
                             return (
                                 <li key={id}>
                                     <Link to={url}>{text}</Link>
@@ -47,32 +43,32 @@ const NavConatiner = styled.nav`
         width: 90vw;
         max-width: var(--max-width);
         margin: 0 auto;
-    }
 
-    .nav-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        .nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-        img {
-            width: 175px;
-            margin-left: -15px;
+            img {
+                width: 175px;
+                margin-left: -15px;
+            }
+
+            .nav-toggle {
+                background: transparent;
+                border: transparent;
+                color: var(--clr-primary-5);
+                cursor: pointer;
+
+                svg {
+                    font-size: 2rem;
+                }
+            }
         }
-    }
 
-    .nav-toggle {
-        background: transparent;
-        border: none;
-        color: var(--clr-primary-5);
-        cursor: pointer;
-        
-        svg {
-            font-size: 2rem;
+        .nav-links {
+            display: none;
         }
-    }
-
-    .nav-links {
-        display: none;
     }
 
     @media (min-width: 992px) {
@@ -80,32 +76,34 @@ const NavConatiner = styled.nav`
             display: grid;
             grid-template-columns: auto 1fr auto;
             align-items: center;
-        }
+            
+            .nav-header {
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            li {
-                margin: 0 0.5rem;
-            }
-
-            a {
-                text-transform: capitalize;
-                color: var(--clr-grey-3);
-                font-size: 1rem;
-                letter-spacing: var(--spacing);
-                padding: 0.5rem;
-
-                &:hover {
-                    border-bottom: 2px solid var(--clr-primary-7);
+                .nav-toggle {
+                    display: none;
                 }
             }
-        }
 
-        .nav-toggle {
-            display: none
+            .nav-links {
+                display: flex;
+                justify-content: center;
+
+                li {
+                    margin: 0 0.5rem;
+                }
+
+                a {
+                    color: var(--clr-grey-3);
+                    text-transform: capitalize;
+                    letter-spacing: var(--spacing);
+                    padding: 0.5rem;
+                    font-size: 1rem;
+
+                    &:hover {
+                        border-bottom: 2px solid var(--clr-primary-7);
+                    }
+                }
+            }
         }
     }
 `;
