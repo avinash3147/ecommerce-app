@@ -4,16 +4,22 @@ import styled from "styled-components";
 
 import logo from '../assets/logo.svg';
 import { links } from "../utils/constants";
+import { CartButtons } from '.';
+import { useProductsContext } from "../context/ProductContext";
 
 const Sidebar = () => {
+
+    const { isSidebarOpen, closeSidebar } = useProductsContext()
+
     return (
         <SidebarComponent>
-            <aside className='sidebar'>
+            <aside 
+                className={ `${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}` }>
 
                 <div className='sidebar-header'>
                     <img src={logo} className='logo' alt='comfy store' />
                     <button className='close-btn'>
-                        <FaTimes />
+                        <FaTimes onClick={closeSidebar} />
                     </button>
                 </div>
 
@@ -30,21 +36,30 @@ const Sidebar = () => {
                     }
                 </ul>
 
-                {/* Cart Section */}
+                <CartButtons />
             </aside>
         </SidebarComponent>
     )
 }
 
 const SidebarComponent = styled.div`
-    // text-align: center;
+    text-align: center;
 
     .sidebar {
-        width: 100%
-        height: 100%
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background: var(--clr-white);
         transition: var(--transition);
-        // add more
+        z-index: -1;
+        transform: translate(-100%);
+    }
+
+    .show-sidebar {
+        transform: translate(0);
+        z-index: 999;
     }
 
     .sidebar-header {
@@ -93,6 +108,10 @@ const SidebarComponent = styled.div`
                 padding-left: 2rem;
             }
         }
+    }
+
+    .cart-btn-wrapper {
+        margin: 2rem auto;
     }
 
     @media screen and (min-width: 992px) {

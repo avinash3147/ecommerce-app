@@ -4,15 +4,20 @@ import { Link } from 'react-router-dom';
 
 import logo from '../assets/logo.svg';
 import { links } from '../utils/constants';
+import { CartButtons } from '.';
+import { useProductsContext } from '../context/ProductContext';
 
 const Navbar = () => {
+
+    const {openSidebar} = useProductsContext()
+
     return (
         <NavConatiner>
             <div className='nav-container'>
                 <div className='nav-header'>
                     <img src={logo} alt='comfy store' />
                     <button className='nav-toggle'>
-                        <FaBars />
+                        <FaBars onClick={openSidebar} />
                     </button>
                 </div>
 
@@ -28,6 +33,8 @@ const Navbar = () => {
                         })
                     }
                 </ul>
+
+                <CartButtons />
             </div>
         </NavConatiner>
     )
@@ -69,6 +76,10 @@ const NavConatiner = styled.nav`
         .nav-links {
             display: none;
         }
+
+        .cart-btn-wrapper {
+            display: none;
+        }
     }
 
     @media (min-width: 992px) {
@@ -103,6 +114,10 @@ const NavConatiner = styled.nav`
                         border-bottom: 2px solid var(--clr-primary-7);
                     }
                 }
+            }
+
+            .cart-btn-wrapper {
+                display: grid;
             }
         }
     }
