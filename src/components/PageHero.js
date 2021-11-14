@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom'
 
-const PageHero = () => {
+const PageHero = ({ title }) => {
     return (
         <Wrapper>
             <div className='section-center'>
                 <h3>
                     <Link to='/'>Home</Link> /
-                    about
+                    {title}
                 </h3>
             </div>
         </Wrapper>

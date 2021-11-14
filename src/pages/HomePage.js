@@ -1,5 +1,15 @@
+import styled from 'styled-components';
+import { Contact, FeaturedProducts, Hero, Services } from '../components';
+
 const HomePage = () => {
-    return <h4>Home Page</h4>
+    return (
+        <main>
+            <Hero />
+            <FeaturedProducts />
+            <Services />
+            <Contact />
+        </main>
+    )
 }
 
 export default HomePage;
