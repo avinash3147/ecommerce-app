@@ -7,6 +7,9 @@ import { useProductsContext } from "../context/ProductContext";
 import { single_product_url as url } from "../utils/constants";
 import { formatPrice } from '../utils/helper';
 import ProductImages from '../components/ProductImages';
+import { Link } from 'react-router-dom';
+import AddToCart from '../components/AddToCart';
+import Rating from '../components/Rating';
 
 const SingleProductPage = () => {
 
@@ -33,7 +36,7 @@ const SingleProductPage = () => {
     }, [error])
 
     if (loading) {
-        return <Loading />
+        return <Loading className='page'/>
     }
 
     if (error) {
@@ -56,11 +59,12 @@ const SingleProductPage = () => {
         <Wrapper>
             <PageHero title={name} product/>
             <div className='section section-center page'>
-                <button className='btn'>Back to products</button>
+                <Link to='/products' className='btn'>Back to products</Link>
                 <div className='product-center'>
                     <ProductImages images={images} />
                     <section>
                         <h2>{name}</h2>
+                        <Rating stars={stars} reviews={reviews} />
                         <h5 className='price'>{formatPrice(price)}</h5>
                         <p className='desc'>{description}</p>
                         <p className='info'>
@@ -78,7 +82,7 @@ const SingleProductPage = () => {
                             {company}
                         </p>
                         <hr />
-                        { stock > 0 && <button className='btn'>Add To Cart</button> }
+                        { stock > 0 && <AddToCart product={product} /> }
                     </section>
                 </div>
             </div>
