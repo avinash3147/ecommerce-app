@@ -8,6 +8,11 @@ import Services from "./Services";
 import FeaturedProducts from "./FeaturedProducts";
 import Contact from "./Contact";
 import Loading from "./Loading";
+import ProductList from "./ProductList";
+import Filters from "./Filters";
+import Sort from "./Sort";
+import Product from "./Product";
+import ListView from "./ListView";
 
 export {
     Navbar,
@@ -19,5 +24,10 @@ export {
     Services,
     FeaturedProducts,
     Contact,
-    Loading
+    Loading,
+    ProductList,
+    Filters,
+    Sort,
+    Product,
+    ListView
 }

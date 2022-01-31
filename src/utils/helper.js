@@ -4,3 +4,13 @@ export const formatPrice = (number) => {
         currency: 'USD',
     }).format(number / 100)
 }
+
+export const getUniqueValues = (data,  type) => {
+    let uniqueType = data.map((item) => item[type]);
+
+    if (type === 'colors') {
+        uniqueType = uniqueType.flat()
+    }
+
+    return ['all', ...new Set(uniqueType)]
+}
